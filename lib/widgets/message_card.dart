@@ -50,20 +50,22 @@ class _MessageCardState extends State<MessageCard> {
                 : mq.width * .04),
             margin: EdgeInsets.symmetric(
                 horizontal: mq.width * .04, vertical: mq.height * .01),
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 221, 245, 255),
-                border: Border.all(color: Colors.lightBlue),
-                //making borders curved
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                    bottomRight: Radius.circular(30))),
+            decoration: const BoxDecoration(
+              color: Color(0xFF427D9D),
+              //border: Border.all(color: Colors.lightBlue),
+              //making borders curved
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30),
+                topRight: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
             child: widget.message.type == Type.text
                 ?
                 //show text
                 Text(
                     widget.message.msg,
-                    style: const TextStyle(fontSize: 15, color: Colors.black87),
+                    style: const TextStyle(fontSize: 16, color: Colors.white),
                   )
                 :
                 //show image
@@ -108,7 +110,8 @@ class _MessageCardState extends State<MessageCard> {
 
             //double tick blue icon for message read
             if (widget.message.read.isNotEmpty)
-              const Icon(Icons.done_all_rounded, color: Colors.blue, size: 20),
+              const Icon(Icons.done_all_rounded,
+                  color: Color(0xFF161A30), size: 20),
 
             //for adding some space
             const SizedBox(width: 2),
@@ -130,11 +133,11 @@ class _MessageCardState extends State<MessageCard> {
                 : mq.width * .04),
             margin: EdgeInsets.symmetric(
                 horizontal: mq.width * .04, vertical: mq.height * .01),
-            decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 218, 255, 176),
-                border: Border.all(color: Colors.lightGreen),
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                //border: Border.all(color: Colors.lightGreen),
                 //making borders curved
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
                     bottomLeft: Radius.circular(30))),
@@ -190,7 +193,7 @@ class _MessageCardState extends State<MessageCard> {
                   //copy option
                   _OptionItem(
                       icon: const Icon(Icons.copy_all_rounded,
-                          color: Colors.blue, size: 26),
+                          color: Color(0xFF161A30), size: 26),
                       name: 'Copy Text',
                       onTap: () async {
                         await Clipboard.setData(
@@ -206,7 +209,7 @@ class _MessageCardState extends State<MessageCard> {
                   //save option
                   _OptionItem(
                       icon: const Icon(Icons.download_rounded,
-                          color: Colors.blue, size: 26),
+                          color: Color(0xFF161A30), size: 26),
                       name: 'Save Image',
                       onTap: () async {
                         try {
@@ -237,7 +240,8 @@ class _MessageCardState extends State<MessageCard> {
               //edit option
               if (widget.message.type == Type.text && isMe)
                 _OptionItem(
-                    icon: const Icon(Icons.edit, color: Colors.blue, size: 26),
+                    icon: const Icon(Icons.edit,
+                        color: Color(0xFF161A30), size: 26),
                     name: 'Edit Message',
                     onTap: () {
                       //for hiding bottom sheet
@@ -268,7 +272,8 @@ class _MessageCardState extends State<MessageCard> {
 
               //sent time
               _OptionItem(
-                  icon: const Icon(Icons.remove_red_eye, color: Colors.blue),
+                  icon: const Icon(Icons.remove_red_eye,
+                      color: Color(0xFF161A30)),
                   name:
                       'Sent At: ${MyDateUtil.getMessageTime(context: context, time: widget.message.sent)}',
                   onTap: () {}),
@@ -299,11 +304,11 @@ class _MessageCardState extends State<MessageCard> {
                   borderRadius: BorderRadius.circular(20)),
 
               //title
-              title: Row(
-                children: const [
+              title: const Row(
+                children: [
                   Icon(
                     Icons.message,
-                    color: Colors.blue,
+                    color: Color(0xFF161A30),
                     size: 28,
                   ),
                   Text(' Update Message')
@@ -330,7 +335,7 @@ class _MessageCardState extends State<MessageCard> {
                     },
                     child: const Text(
                       'Cancel',
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                      style: TextStyle(color: Color(0xFF161A30), fontSize: 16),
                     )),
 
                 //update button
@@ -342,7 +347,7 @@ class _MessageCardState extends State<MessageCard> {
                     },
                     child: const Text(
                       'Update',
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                      style: TextStyle(color: Color(0xFF161A30), fontSize: 16),
                     ))
               ],
             ));

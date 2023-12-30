@@ -26,6 +26,7 @@ class APIs {
       id: user.uid,
       name: user.displayName.toString(),
       email: user.email.toString(),
+      phone: user.phoneNumber.toString(),
       about: "Hey, I'm using Chat App!",
       image: user.photoURL.toString(),
       createdAt: '',
@@ -148,6 +149,7 @@ class APIs {
     final chatUser = ChatUser(
         id: user.uid,
         name: user.displayName.toString(),
+        phone: user.phoneNumber.toString(),
         email: user.email.toString(),
         about: "Hey, I'm using Chat App!",
         image: user.photoURL.toString(),
@@ -200,6 +202,7 @@ class APIs {
   // for updating user information
   static Future<void> updateUserInfo() async {
     await firestore.collection('users').doc(user.uid).update({
+      'phone': me.phone,
       'name': me.name,
       'about': me.about,
     });

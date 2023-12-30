@@ -31,6 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # For using Google fonts
+  google_fonts: 
 
   # For using cupertino icons
   cupertino_icons: ^1.0.2

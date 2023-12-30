@@ -3,6 +3,7 @@ class ChatUser {
     required this.image,
     required this.about,
     required this.name,
+    required this.phone,
     required this.createdAt,
     required this.isOnline,
     required this.id,
@@ -13,6 +14,7 @@ class ChatUser {
   late String image;
   late String about;
   late String name;
+  late String phone;
   late String createdAt;
   late bool isOnline;
   late String id;

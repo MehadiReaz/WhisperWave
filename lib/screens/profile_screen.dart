@@ -36,8 +36,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // for hiding keyboard
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
+          backgroundColor: const Color(0xFFF0ECE5),
           //app bar
-          appBar: AppBar(title: const Text('Profile Screen')),
+          appBar: AppBar(title: const Text('Edit Profile')),
 
           //floating button to log out
           floatingActionButton: Padding(
@@ -127,7 +128,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                             shape: const CircleBorder(),
                             color: Colors.white,
-                            child: const Icon(Icons.edit, color: Colors.blue),
+                            child: const Icon(Icons.edit,
+                                color: Color(0xFF161A30)),
                           ),
                         )
                       ],
@@ -137,13 +139,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: mq.height * .03),
 
                     // user email label
-                    Text(widget.user.email,
-                        style: const TextStyle(
-                            color: Colors.black54, fontSize: 16)),
+                    // Text(widget.user.email,
+                    //     style: const TextStyle(
+                    //         color: Colors.black54, fontSize: 16)),
 
                     // for adding some space
                     SizedBox(height: mq.height * .05),
 
+                    TextFormField(
+                      initialValue: widget.user.email,
+                      enabled: false,
+                      onSaved: (val) => APIs.me.email = val ?? '',
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        prefixIcon:
+                            const Icon(Icons.email, color: Color(0xFF161A30)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        hintText: 'eg. Happy Singh',
+                        label: const Text('Email'),
+                      ),
+                    ),
+                    SizedBox(height: mq.height * .02),
                     // name input field
                     TextFormField(
                       initialValue: widget.user.name,
@@ -152,12 +171,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ? null
                           : 'Required Field',
                       decoration: InputDecoration(
-                          prefixIcon:
-                              const Icon(Icons.person, color: Colors.blue),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          hintText: 'eg. Happy Singh',
-                          label: const Text('Name')),
+                        prefixIcon: const Icon(
+                          Icons.person,
+                          color: Color(0xFF161A30),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Color(0xFF161A30)),
+                            borderRadius: BorderRadius.circular(12)),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xFF161A30),
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        hintText: 'eg. Happy Singh',
+                        label: const Text(
+                          'Name',
+                          style: TextStyle(
+                            color: Color(0xFF161A30),
+                          ),
+                        ),
+                      ),
                     ),
 
                     // for adding some space
@@ -171,12 +208,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ? null
                           : 'Required Field',
                       decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.info_outline,
-                              color: Colors.blue),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          hintText: 'eg. Feeling Happy',
-                          label: const Text('About')),
+                        filled: true,
+                        fillColor: Colors.white,
+                        prefixIcon: const Icon(Icons.info_outline,
+                            color: Color(0xFF161A30)),
+                        border: OutlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: Color(0xFF161A30)),
+                            borderRadius: BorderRadius.circular(12)),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xFF161A30),
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        hintText: 'eg. Feeling Happy',
+                        label: const Text(
+                          'About',
+                          style: TextStyle(
+                            color: Color(0xFF161A30),
+                          ),
+                        ),
+                      ),
                     ),
 
                     // for adding some space
@@ -185,6 +238,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // update profile button
                     ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF161A30),
                           shape: const StadiumBorder(),
                           minimumSize: Size(mq.width * .5, mq.height * .06)),
                       onPressed: () {
@@ -197,8 +251,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         }
                       },
                       icon: const Icon(Icons.edit, size: 28),
-                      label:
-                          const Text('UPDATE', style: TextStyle(fontSize: 16)),
+                      label: const Text(
+                        'UPDATE',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     )
                   ],
                 ),

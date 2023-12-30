@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../api/apis.dart';
 import '../helper/dialogs.dart';
@@ -71,8 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
         child: Scaffold(
+          backgroundColor: const Color(0xFFF0ECE5),
           //app bar
           appBar: AppBar(
+            // backgroundColor: const Color(0xFFB6BBC4),
+            // elevation: 5,
             title: _isSearching
                 ? TextField(
                     decoration: const InputDecoration(
@@ -95,7 +99,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       }
                     },
                   )
-                : const Text('Chat App'),
+                : Text(
+                    'Whisper Wave',
+                    style: GoogleFonts.poppins(),
+                  ),
             actions: [
               //search user button
               IconButton(
@@ -123,11 +130,23 @@ class _HomeScreenState extends State<HomeScreen> {
           //floating button to add new user
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 10),
-            child: FloatingActionButton(
+            child: FloatingActionButton.extended(
                 onPressed: () {
                   _addChatUserDialog();
                 },
-                child: const Icon(Icons.add_comment_rounded)),
+                backgroundColor: const Color(0xFF161A30),
+                label: const Row(
+                  children: [
+                    Icon(Icons.person_add),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Add User',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                )),
           ),
 
           //body
@@ -208,14 +227,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   left: 24, right: 24, top: 20, bottom: 10),
 
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
+                borderRadius: BorderRadius.circular(20),
+              ),
 
               //title
               title: const Row(
                 children: [
                   Icon(
                     Icons.person_add,
-                    color: Colors.blue,
+                    color: Color(0xFF161A30),
                     size: 28,
                   ),
                   Text('  Add User')
@@ -227,41 +247,47 @@ class _HomeScreenState extends State<HomeScreen> {
                 maxLines: null,
                 onChanged: (value) => email = value,
                 decoration: InputDecoration(
-                    hintText: 'Email Id',
-                    prefixIcon: const Icon(Icons.email, color: Colors.blue),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15))),
+                  hintText: 'Email',
+                  prefixIcon: const Icon(Icons.email, color: Color(0xFF161A30)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                ),
               ),
 
               //actions
               actions: [
                 //cancel button
                 MaterialButton(
-                    onPressed: () {
-                      //hide alert dialog
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Cancel',
-                        style: TextStyle(color: Colors.blue, fontSize: 16))),
+                  onPressed: () {
+                    //hide alert dialog
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(color: Color(0xFF161A30), fontSize: 16),
+                  ),
+                ),
 
                 //add button
                 MaterialButton(
-                    onPressed: () async {
-                      //hide alert dialog
-                      Navigator.pop(context);
-                      if (email.isNotEmpty) {
-                        await APIs.addChatUser(email).then((value) {
-                          if (!value) {
-                            Dialogs.showSnackbar(
-                                context, 'User does not Exists!');
-                          }
-                        });
-                      }
-                    },
-                    child: const Text(
-                      'Add',
-                      style: TextStyle(color: Colors.blue, fontSize: 16),
-                    ))
+                  onPressed: () async {
+                    //hide alert dialog
+                    Navigator.pop(context);
+                    if (email.isNotEmpty) {
+                      await APIs.addChatUser(email).then((value) {
+                        if (!value) {
+                          Dialogs.showSnackbar(
+                              context, 'User does not Exists!');
+                        }
+                      });
+                    }
+                  },
+                  child: const Text(
+                    'Add',
+                    style: TextStyle(color: Color(0xFF161A30), fontSize: 16),
+                  ),
+                ),
               ],
             ));
   }

@@ -36,14 +36,18 @@ class MyApp extends StatelessWidget {
         title: 'Chat App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 1,
-          iconTheme: IconThemeData(color: Colors.black),
-          titleTextStyle: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.normal, fontSize: 19),
-          backgroundColor: Colors.white,
-        )),
+          primaryColor: Color(0xFF161A30),
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            elevation: 1,
+            iconTheme: IconThemeData(color: Colors.black),
+            titleTextStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.normal,
+                fontSize: 19),
+            backgroundColor: Colors.white,
+          ),
+        ),
         home: const SplashScreen());
   }
 }

@@ -58,7 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
               flexibleSpace: _appBar(),
             ),
 
-            backgroundColor: const Color.fromARGB(255, 234, 248, 255),
+            backgroundColor: const Color(0xFFF0ECE5),
 
             //body
             body: Column(
@@ -194,7 +194,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       Text(
                           list.isNotEmpty
                               ? list[0].isOnline
-                                  ? 'Online'
+                                  ? 'Active Now'
                                   : MyDateUtil.getLastActiveTime(
                                       context: context,
                                       lastActive: list[0].lastActive)
@@ -231,7 +231,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         setState(() => _showEmoji = !_showEmoji);
                       },
                       icon: const Icon(Icons.emoji_emotions,
-                          color: Colors.blueAccent, size: 25)),
+                          color: Color(0xFF161A30), size: 25)),
 
                   Expanded(
                       child: TextField(
@@ -243,7 +243,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                     decoration: const InputDecoration(
                         hintText: 'Type Something...',
-                        hintStyle: TextStyle(color: Colors.blueAccent),
+                        hintStyle: TextStyle(color: Color(0xFF161A30)),
                         border: InputBorder.none),
                   )),
 
@@ -265,7 +265,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       icon: const Icon(Icons.image,
-                          color: Colors.blueAccent, size: 26)),
+                          color: Color(0xFF161A30), size: 26)),
 
                   //take image from camera button
                   IconButton(
@@ -285,7 +285,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       icon: const Icon(Icons.camera_alt_rounded,
-                          color: Colors.blueAccent, size: 26)),
+                          color: Color(0xFF161A30), size: 26)),
 
                   //adding some space
                   SizedBox(width: mq.width * .02),
@@ -314,7 +314,7 @@ class _ChatScreenState extends State<ChatScreen> {
             padding:
                 const EdgeInsets.only(top: 10, bottom: 10, right: 5, left: 10),
             shape: const CircleBorder(),
-            color: Colors.green,
+            color: const Color(0xFF161A30),
             child: const Icon(Icons.send, color: Colors.white, size: 28),
           )
         ],
